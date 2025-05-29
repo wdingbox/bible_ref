@@ -1,0 +1,47 @@
+<html>
+<script src="../../js/jq.js" type="text/javascript"></script>
+
+<script language="javascript" src="../../js/Rapid_Sort_Table.js?rev=250104"></script>
+
+<script src="./BibleFamilyNameMeaning.json.js" type="text/javascript"></script>
+<script>
+
+    $(function () {
+        reader2tab()
+    })
+    function reader2tab() {
+        var str = "", scat = "", dat = [], i = 0;
+        BibleFamilyNameMeaning.forEach(obj => {
+            str += `<tr><td>${i++}</td><td>${obj.name.CUVt}</td><td>${obj.name.NIV}</td><td>${obj.meaning}</td><td>${obj.vers}</td><td>${obj.cat}</td></tr>`
+          
+        });
+        
+        
+         
+        $("#tbdy").prepend(str)
+
+        var rst = new Rapid_Sort_Table("#tab")
+
+        $("#out").val(JSON.stringify(dat, null,4))
+    }
+
+</script>
+
+<body>
+    <p><strong>圣经中人物名字的含义</strong></p>
+    <table id="tab" border="1" >
+        <thead>
+            <tr><th>#</th><th>Name(CUVt)</th><th>Name(NIV)</th><th>Meaning</th><th>Vers</th><th>Cat</th></tr>
+        </thead>
+        <tbody id="tbdy" contenteditable="true">
+
+        </tbody>
+
+    </table>
+    <textarea id="out" ></textarea>
+
+</body>
+
+</html>
+
+
