@@ -4,6 +4,11 @@
 <script language="javascript" src="../../js/Rapid_Sort_Table.js?rev=250104"></script>
 
 <script src="./BibleFamilyNameMeaning.json.js" type="text/javascript"></script>
+<style>
+    .hili_td{
+        background-color: bisque;
+    }
+</style>
 <script>
 
     $(function () {
@@ -21,6 +26,10 @@
         $("#tbdy").prepend(str)
 
         var rst = new Rapid_Sort_Table("#tab")
+
+        $("td").on("click",function(){
+            $(this).toggleClass("hili_td")
+        })
 
         $("#out").val(JSON.stringify(dat, null,4))
     }
